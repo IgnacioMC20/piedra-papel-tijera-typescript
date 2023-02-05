@@ -1,18 +1,53 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
-import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
+import { Button, FormControl, FormLabel, RadioGroup } from '@mui/material'
 import React, { useState } from 'react';
 import { Option } from '@/components/Option';
-import { OptionProps } from '@/interfaces';
+import { OptionProps, validValue } from '@/interfaces';
 import { options } from '@/data';
 
 export default function Home() {
 
   const [value, setValue] = useState('piedra');
 
-  const handleSubmit = (value: string) => {
-    console.log(value)
+  const handleSubmit = (value: validValue) => {
+    const valueCPU = options[Math.floor(Math.random() * 3)].value // options[1].value
+    console.log({ value, valueCPU })
+
+    if (value == valueCPU) {
+      alert('Empate de pana 🤝🏻')
+      return;
+    }
+
+    switch (value) {
+
+      case 'piedra':
+        if (valueCPU == 'tijera') {
+          alert(`User Gana 🤝🏻 ${valueCPU}`)
+        } else {
+          alert(`CPU gana ${valueCPU}`)
+        }
+        break;
+
+      case 'papel':
+        if (valueCPU == 'piedra') {
+          alert(`User Gana 🤝🏻 ${valueCPU}`)
+        } else {
+          alert(`CPU gana ${valueCPU}`)
+        }
+        break;
+
+      case 'tijera':
+        if (valueCPU == 'papel') {
+          alert(`User Gana 🤝🏻 ${valueCPU}`)
+        } else {
+          alert(`CPU gana ${valueCPU}`)
+        }
+        break;
+
+      default:
+        break;
+    }
   }
 
   return (

@@ -6,7 +6,7 @@ export interface OptionProps {
     image: StaticImageData;
 } 
 
-type validValue = 'piedra' | 'papel' | 'tijera';
+export type validValue = 'piedra' | 'papel' | 'tijera';
 
 export interface OptionsProps {
     map(arg0: (option: any) => JSX.Element): import("react").ReactNode;

@@ -8,12 +8,13 @@ import { OptionProps } from "@/interfaces";
 export const Option = ({ name, value, image }: OptionProps) => {
 
     return (
-        <div className={styles.logo} key={name}>
+        <div className={styles.logo}>
             <Image
                 src={image}
                 alt={name}
                 width={200}
                 height={200}
+                priority
             />
             <FormControlLabel value={value} control={<Radio />} label={name} />
         </div>
